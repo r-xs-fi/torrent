@@ -1,0 +1,17 @@
+{
+	"needs_privileged_because": "file permissions and internal working not yet worked out how-to",
+	"usage_examples": [
+		{
+			"title": "Download a torrent",
+			"cmd": "download magnet:?xt=urn:btih:...",
+			"example_output": "136.95µs: getting torrent info for \"...\"",
+			"docker_opts": ["--network=host", "--volume=$(pwd):/workspace"]
+		},
+		{
+			"title": "Pick a file from inside the torrent to download",
+			"cmd": "download --file=file.mp4 magnet:?xt=urn:btih:...",
+			"example_output": "136.95µs: getting torrent info for \"...\"",
+			"docker_opts": ["--network=host", "--volume=$(pwd):/workspace"]
+		}
+	]
+}
