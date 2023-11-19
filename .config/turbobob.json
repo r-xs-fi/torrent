@@ -1,0 +1,12 @@
+{
+	"for_description_of_this_file_see": "https://github.com/function61/turbobob",
+	"version_major": 1,
+	"project_name": "torrent",
+	"meta": {
+		"description": "Container image for torrent - Full-featured BitTorrent client package and utilities.",
+		"website": "https://github.com/anacrolix/torrent"
+	},
+	"docker_images": [
+		{ "image": "ghcr.io/r-xs-fi/torrent", "platforms": ["linux/amd64", "linux/arm64", "linux/arm/v7", "linux/riscv64"], "tag_latest": true }
+	]
+}
