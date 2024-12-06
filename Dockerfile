@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 fn61/buildkit-golang:20230219_1208_a7139a03 AS builder
+FROM --platform=linux/amd64 fn61/buildkit-golang:20241119_1422_525a63d3 AS builder
 
 ARG TARGETOS
 ARG TARGETARCH
