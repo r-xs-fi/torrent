@@ -1,4 +1,5 @@
 {
+	"supply_chain_descriptor": "source-code:https://github.com/anacrolix/torrent",
 	"needs_privileged_because": "file permissions and internal working not yet worked out how-to",
 	"usage_examples": [
 		{
