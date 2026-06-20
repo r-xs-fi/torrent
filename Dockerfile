@@ -14,18 +14,16 @@ RUN --mount=type=cache,id=gomodcache,target=/go/pkg/mod,sharing=locked \
 #  ▲               runtime ──┐
 #  └── build                 ▼
 
-RUN mkdir /tmp/tmpdir && chown 1000:1000 /tmp/tmpdir
+FROM alpine:latest
 
-FROM scratch
+# torrent client might need ca-certificates if downloading `.torrent` file from `https://...` first
+RUN apk add --no-cache ca-certificates
 
 WORKDIR /workspace
 
 ENTRYPOINT ["/usr/bin/torrent"]
 
 CMD ["download"]
-
-# dummy command to make dir /tmp (torrent-pick needs /tmp dir to be present)
-COPY --from=builder --chmod=777 /tmp/tmpdir /tmp
 
 COPY --from=builder /torrent/cmd/torrent/torrent /torrent/cmd/torrent-pick/torrent-pick /usr/bin/
 
