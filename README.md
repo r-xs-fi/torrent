@@ -5,7 +5,7 @@ Container image for torrent - Full-featured BitTorrent client package and utilit
 ### Download a torrent
 
 ```shell
-docker run --rm -it --privileged --network=host --volume=$(pwd):/workspace ghcr.io/r-xs-fi/torrent download magnet:?xt=urn:btih:...
+docker run --rm -it --network=host --volume=$(pwd):/workspace ghcr.io/r-xs-fi/torrent download magnet:?xt=urn:btih:...
 ```
 
 Outputs:
@@ -15,7 +15,7 @@ Outputs:
 ### Pick a file from inside the torrent to download
 
 ```shell
-docker run --rm -it --privileged --network=host --volume=$(pwd):/workspace ghcr.io/r-xs-fi/torrent download --file=file.mp4 magnet:?xt=urn:btih:...
+docker run --rm -it --network=host --volume=$(pwd):/workspace ghcr.io/r-xs-fi/torrent download --file=file.mp4 magnet:?xt=urn:btih:...
 ```
 
 Outputs:

@@ -29,5 +29,4 @@ COPY --from=builder --chmod=777 /tmp/tmpdir /tmp
 
 COPY --from=builder /torrent/cmd/torrent/torrent /torrent/cmd/torrent-pick/torrent-pick /usr/bin/
 
-# running as unprivileged user not possible because:
-#   file permissions and internal working not yet worked out how-to
+USER 1000:1000
