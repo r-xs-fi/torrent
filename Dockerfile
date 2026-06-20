@@ -1,4 +1,5 @@
-FROM --platform=linux/amd64 fn61/buildkit-golang:20251124_1405_720e0dc0 AS builder
+# `--platform` to always compile on builder native platform for speed (Go is good at cross-compiling)
+FROM --platform=$BUILDPLATFORM fn61/buildkit-golang:20260604_1344_ff654e98 AS builder
 
 ARG TARGETOS
 ARG TARGETARCH
