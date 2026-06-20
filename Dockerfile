@@ -3,12 +3,15 @@ FROM --platform=linux/amd64 fn61/buildkit-golang:20251124_1405_720e0dc0 AS build
 ARG TARGETOS
 ARG TARGETARCH
 
+RUN cd / && git clone --recurse-submodules https://github.com/anacrolix/torrent.git
 
-RUN cd / && git clone https://github.com/anacrolix/torrent.git
+RUN --mount=type=cache,id=gomodcache,target=/go/pkg/mod,sharing=locked \
+    --mount=type=cache,id=gobuildcache,target=/root/.cache/go-build,sharing=locked \
+    cd /torrent/cmd/torrent && GOARCH=$TARGETARCH CGO_ENABLED=0 go build -ldflags "-extldflags \"-static\"" && \
+    cd /torrent/cmd/torrent-pick && GOARCH=$TARGETARCH CGO_ENABLED=0 go build -ldflags "-extldflags \"-static\""
 
-RUN cd /torrent/cmd/torrent && GOARCH=$TARGETARCH CGO_ENABLED=0 go build -ldflags "-extldflags \"-static\""
-
-RUN cd /torrent/cmd/torrent-pick && GOARCH=$TARGETARCH CGO_ENABLED=0 go build -ldflags "-extldflags \"-static\""
+#  ▲               runtime ──┐
+#  └── build                 ▼
 
 RUN mkdir /tmp/tmpdir && chown 1000:1000 /tmp/tmpdir
 
